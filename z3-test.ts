@@ -1,9 +1,35 @@
 
-const { instance, module } = await WebAssembly.instantiateStreaming(
-    fetch("https://raw.githubusercontent.com/dtk/dtk-cli/test-z32/z3-built.wasm"),
-  );
+
+
+
+
+import init from "./z3-solver/build/node.d.ts"
+
+export async function loadWasm() {
+  await init()
+  const bytes = await Deno.readFile("z3-built.wasm");
+  const wasmModule = new WebAssembly.Module(bytes);
+  const imports = {}; 
+  //const wasmInstance = new WebAssembly.Instance(wasmModule, imports);
+  const _foo = 1
+}
+await loadWasm()
+/*
+const module = await WebAssembly.compileStreaming(
+  fetch(path),
+);
+
+/* do some more stuff */
+/*
+const instance = await WebAssembly.instantiate(module);
+instance.exports.increment as (input: number) => number;
+const _foo2 = 1
+*/
+/*
+const fetchWrapper =  fetch()
+const { instance, module } = await WebAssembly.instantiateStreaming(fetchWrapper)
 const _foo = 1
-  /*
+
 const wasmModule = new WebAssembly.Module(wasmCode);
 const wasmInstance = new WebAssembly.Instance(wasmModule);
 const main = wasmInstance.exports.main as CallableFunction;

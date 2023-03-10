@@ -1,0 +1,108 @@
+{
+  "_from": "z3-solver",
+  "_id": "z3-solver@4.12.1",
+  "_inBundle": false,
+  "_integrity": "sha512-aeC+KXMVGcFhnd3FKktybZx+zaVlAZ9D0Ew5cB9LwWp/ofOmtd/DiGywaJ3MN+ljfJRQumveA26poUsg1Hh+lA==",
+  "_location": "/z3-solver",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "z3-solver",
+    "name": "z3-solver",
+    "escapedName": "z3-solver",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/z3-solver/-/z3-solver-4.12.1.tgz",
+  "_shasum": "9515bb3eca1a1ef1441a9e8dda147f9f0d8a0029",
+  "_spec": "z3-solver",
+  "_where": "/root/foo",
+  "browser": "build/browser.js",
+  "bugs": {
+    "url": "https://github.com/Z3Prover/z3/issues"
+  },
+  "bundleDependencies": false,
+  "contributors": [
+    {
+      "name": "Kevin Gibbons",
+      "email": "bakkot@gmail.com"
+    },
+    {
+      "name": "Nikolaj Bjorner"
+    },
+    {
+      "name": "Olaf Tomalka",
+      "email": "olaf@tomalka.me"
+    },
+    {
+      "name": "Walden Yan",
+      "email": "waldenyan20@gmail.com"
+    }
+  ],
+  "dependencies": {
+    "async-mutex": "^0.3.2"
+  },
+  "deprecated": false,
+  "description": "This project provides high-level and low-level TypeScript bindings for the [Z3 theorem prover](https://github.com/Z3Prover/z3). It is available on npm as [z3-solver](https://www.npmjs.com/package/z3-solver).",
+  "devDependencies": {
+    "@types/jest": "^27.5.1",
+    "@types/node": "^17.0.8",
+    "@types/prettier": "^2.6.1",
+    "@types/sprintf-js": "^1.1.2",
+    "check-engine": "^1.10.1",
+    "iter-tools": "^7.3.1",
+    "jest": "^28.1.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.5.1",
+    "rimraf": "^3.0.2",
+    "sprintf-js": "^1.1.2",
+    "ts-expect": "^1.3.0",
+    "ts-jest": "^28.0.3",
+    "ts-node": "^10.8.0",
+    "typedoc": "^0.22.17",
+    "typescript": "^4.5.4"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "files": [
+    "build/**/*.{js,d.ts,wasm}"
+  ],
+  "homepage": "https://github.com/Z3Prover/z3/tree/master/src/api/js",
+  "keywords": [
+    "Z3",
+    "theorem",
+    "prover",
+    "solver",
+    "satisfiability",
+    "smt",
+    "satisfiability modulo theories"
+  ],
+  "license": "MIT",
+  "main": "build/node.js",
+  "name": "z3-solver",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Z3Prover/z3.git"
+  },
+  "scripts": {
+    "build:ts": "run-s -l build:ts:generate build:ts:tsc",
+    "build:ts:generate": "ts-node --transpileOnly scripts/make-ts-wrapper.ts src/low-level/wrapper.__GENERATED__.ts src/low-level/types.__GENERATED__.ts",
+    "build:ts:tsc": "tsc --pretty --project tsconfig.build.json ",
+    "build:wasm": "ts-node --transpileOnly ./scripts/build-wasm.ts",
+    "check-engine": "check-engine",
+    "clean": "rimraf build 'src/**/*.__GENERATED__.*'",
+    "docs": "typedoc",
+    "format": "prettier --write '{,src/,scripts/}*.{js,ts}'",
+    "lint": "prettier -c '{,src/,scripts/,examples}*.{js,ts}'",
+    "test": "jest"
+  },
+  "types": "build/node.d.ts",
+  "version": "4.12.1"
+}
